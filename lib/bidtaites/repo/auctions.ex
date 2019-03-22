@@ -29,13 +29,13 @@ defmodule Bidtaites.Repo.Auctions do
   )a
 
   def all do
-    Repo.all(from n in __MODULE__)
+    Repo.all(from(n in __MODULE__))
   end
 
   def insert(auction = %{}) do
     %__MODULE__{}
     |> cast(auction, @permitted_fields)
-    |> Repo.insert
+    |> Repo.insert()
   end
 
   def get(id) do
@@ -45,11 +45,11 @@ defmodule Bidtaites.Repo.Auctions do
   def update(%{id: id} = auction) do
     get(id)
     |> cast(auction, @permitted_fields)
-    |> Repo.update
+    |> Repo.update()
   end
 
   def delete(id) do
     Repo.get!(__MODULE__, id)
-    |> Repo.delete
+    |> Repo.delete()
   end
 end

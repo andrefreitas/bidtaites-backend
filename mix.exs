@@ -33,6 +33,8 @@ defmodule Bidtaites.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:httpoison, "~> 1.4"},
+      {:poison, "~> 3.1"},
       {:phoenix, "~> 1.4.2"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
