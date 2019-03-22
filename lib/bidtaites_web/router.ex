@@ -12,5 +12,8 @@ defmodule BidtaitesWeb.Router do
     post "/auctions", AuctionsController, :create
     get "/auctions", AuctionsController, :list
     get "/auctions/:id", AuctionsController, :fetch
+
+    post "/auctions/:id/bids", BidsController, :create
+    post "/auctions/:id/bids", BidsController, :list
   end
 end
