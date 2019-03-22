@@ -8,10 +8,10 @@
 use Mix.Config
 
 config :bidtaites, Bidtaites.Repo,
-  database: "bidtaites",
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost"
+  database: "d1q9pt7aok0jfo",
+  username: "twgqxtkwcpvfhe",
+  password: "3f7fb726ed76c57f1313d58a0c25b6702a640067bdda0fbaac9a8effe955a3f4",
+  hostname: "ec2-54-247-70-127.eu-west-1.compute.amazonaws.com"
 
 config :bidtaites,
   ecto_repos: [Bidtaites.Repo]

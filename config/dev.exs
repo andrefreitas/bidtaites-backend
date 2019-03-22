@@ -13,6 +13,12 @@ config :bidtaites, BidtaitesWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+config :bidtaites, Bidtaites.Repo,
+  database: "bidtaites",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost"
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
