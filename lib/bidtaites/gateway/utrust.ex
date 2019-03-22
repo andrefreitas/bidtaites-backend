@@ -34,7 +34,7 @@ defmodule Bidtaites.Gateway.Utrust do
           type: "orders",
           attributes: %{
             order: %{
-              reference: "order-#{item_id}",
+              reference: item_id,
               amount: %{
                 total: price,
                 currency: "EUR",
