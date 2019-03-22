@@ -14,13 +14,9 @@ defmodule Bidtaites.Interactors.CreateAuction do
 
     %{end_at: end_at} = auction_with_uuid
 
-    end_at =
-    if end_at == nil do
-      DateTime.utc_now |> DateTime.to_unix
-    end
+    #auction_with_uuid = Map.merge(auction_with_uuid, %{end_at: end_at})
 
-    auction_with_uuid = Map.merge(auction_with_uuid, %{end_at: end_at})
-    IO.inspect auction_with_uuid
+    #IO.inspect auction_with_uuid
 
     case Auctions.insert(auction_with_uuid) do
       {:ok, _} ->
