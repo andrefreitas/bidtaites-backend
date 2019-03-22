@@ -80,7 +80,7 @@ defmodule Bidtaites.Repo.Bids do
     case Repo.all(max_bid_query) |> List.first do
       nil -> []
       max_bid ->
-        IO.inspect ">>> Max Bid #{max_bid.auction_id}: #{max_bid.photo} ~ #{max_bid.email}"
+        Logger.warn(">>> Max Bid #{max_bid.auction_id}: #{max_bid.photo} ~ #{max_bid.email}")
         refunds_query = from b in __MODULE__, where: b.auction_id == ^auction_id and b.email != ^max_bid.email
         Repo.all(refunds_query)
     end
