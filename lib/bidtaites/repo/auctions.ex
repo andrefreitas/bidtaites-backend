@@ -11,6 +11,7 @@ defmodule Bidtaites.Repo.Auctions do
     field :description, :string
     field :phone_number, :string
     field :end_at, :integer
+    field :status, :string
   end
 
   import Ecto.Query
@@ -26,6 +27,7 @@ defmodule Bidtaites.Repo.Auctions do
     description
     phone_number
     end_at
+    status
   )a
 
   def all do

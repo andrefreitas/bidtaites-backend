@@ -46,7 +46,7 @@ defmodule Bidtaites.Gateway.Utrust do
               return_urls: %{
                 return_url: "https://bidtaites.herokuapp.com/?status=return",
                 cancel_url: "https://bidtaites.herokuapp.com/?status=cancel",
-                callback_url: "https://bidtaites-backend.herokuapp.com/bids/callback"
+                callback_url: "https://bidtaites-backend.herokuapp.com/api/bids/callback"
               },
               line_items: [
                 %{

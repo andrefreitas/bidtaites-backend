@@ -11,9 +11,10 @@ defmodule Bidtaites.Application do
       # Start the Ecto repository
       Bidtaites.Repo,
       # Start the endpoint when the application starts
-      BidtaitesWeb.Endpoint
+      BidtaitesWeb.Endpoint,
       # Starts a worker by calling: Bidtaites.Worker.start_link(arg)
       # {Bidtaites.Worker, arg},
+      {Bidtaites.Refund.DynamicSupervisor, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
