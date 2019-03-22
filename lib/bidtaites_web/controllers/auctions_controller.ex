@@ -33,8 +33,9 @@ defmodule BidtaitesWeb.AuctionsController do
         put_status(conn, :not_found)
         |> json(%{error: "auction not found"})
 
-      _ ->
-        json(conn, GetAuction.call(params["id"]))
+      val ->
+        Logger.info("#{inspect val}")
+        json(conn, val)
     end
   end
 end
