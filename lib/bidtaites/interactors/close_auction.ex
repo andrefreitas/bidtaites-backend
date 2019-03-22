@@ -9,7 +9,7 @@ defmodule Bidtaites.Interactors.CloseAuction do
       status: status
     }
 
-    %{"data": %{"attributes": %{"token": token}}} = Utrust.session
+    {:ok, %{"data" => %{"attributes" => %{"token" => token}}}} = Utrust.session
 
     auction_id
     |> Bids.refunds

@@ -14,7 +14,8 @@ defmodule Bidtaites.Refund.Server do
       supervisor_pid: args[:supervisor_pid]
     }
 
-    timeout = state.end_at - (DateTime.utc_now |> DateTime.to_unix)
+    #timeout = state.end_at - (DateTime.utc_now |> DateTime.to_unix)
+    timeout = 0
     Logger.info("starting auction: #{args[:uuid]} with timeout #{timeout}")
     Process.send_after(self(), {:timeout}, (if timeout < 0, do: 0, else: (timeout * 1000)))
 

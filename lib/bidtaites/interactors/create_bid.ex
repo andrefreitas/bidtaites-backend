@@ -9,9 +9,9 @@ defmodule Bidtaites.Interactors.CreateBid do
 
     case Bids.last(auction_id) do
       nil -> bid_correct(bid)
-      %{"value" => value} when value < val -> bid_correct(bid)
+      %Bidtaites.Repo.Bids{value: value} when value < val -> bid_correct(bid)
       error ->
-        Logger.error("#{inspect error}")
+        Logger.error("#{inspect error} // #{inspect val}  // #{inspect error.value}")
         %{error: "error creating bid: bid lower than value."}
     end
 
