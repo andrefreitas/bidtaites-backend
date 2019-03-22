@@ -3,7 +3,8 @@ defmodule BidtaitesWeb.AuctionsController do
 
   alias Bidtaites.Interactors.{
     CreateAuction,
-    ListAuctions
+    ListAuctions,
+    GetAuction
     }
 
   def create(conn, params) do
@@ -21,5 +22,17 @@ defmodule BidtaitesWeb.AuctionsController do
 
   def list(conn, _) do
     json(conn, ListAuctions.call)
+  end
+
+  require Logger
+
+  def fetch(conn, params) do
+    case GetAuction.call(params["id"]) do
+      nil ->
+        put_status(conn, :not_found)
+        |> json(%{error: "auction not found"})
+      _   ->
+        json(conn, GetAuction.call(params["id"]))
+    end
   end
 end

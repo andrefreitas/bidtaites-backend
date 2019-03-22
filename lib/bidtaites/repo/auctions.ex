@@ -39,7 +39,7 @@ defmodule Bidtaites.Repo.Auctions do
   end
 
   def get(id) do
-    Repo.get(__MODULE__, id)
+    Repo.get_by(__MODULE__, uuid: id)
   end
 
   def update(%{id: id} = auction) do
