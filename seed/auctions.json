@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Electric Scooters",
+    "description": "Awesome scooters to meet Lisbon!",
+    "price": "30",
+    "photo": "https://i.postimg.cc/QNdk2jrM/transferir.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  }
+]
