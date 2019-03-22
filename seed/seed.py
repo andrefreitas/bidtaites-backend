@@ -3,11 +3,18 @@
 import os
 import requests
 import json
+import time
+import random
 
 API_URL = os.getenv("API_URL", "http://localhost:4000")
 
 
+def random_expiration_timestamp(delta_hours):
+    return int(time.time() + random.random() * delta_hours * (60 ** 2))
+
+
 def create_auction(auction):
+    auction['end_at'] = random_expiration_timestamp(delta_hours=3)
     requests.post(f"{API_URL}/api/auctions", json=auction)
     print(f"Created {auction['title']}")
 

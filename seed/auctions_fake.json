@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Electric Scooters",
+    "description": "Awesome scooters to meet Lisbon!",
+    "price": "1",
+    "photo": "https://i.postimg.cc/QNdk2jrM/transferir.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Pastel de Nata",
+    "description": "Delicious Natas!!!!",
+    "price": "1",
+    "photo": "https://i.postimg.cc/FR2nmw6R/pastel-nata.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Conan Osiris",
+    "description": "Broken phones",
+    "price": "1",
+    "photo": "https://i.postimg.cc/s2McXw7Z/conan-osiris.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Stickers",
+    "description": "Awesome stickers",
+    "price": "1",
+    "photo": "https://i.postimg.cc/vHjDyhYK/Captura-de-ecra-2019-03-22-a-s-15-51-29.png",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  }
+]

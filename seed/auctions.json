@@ -1,9 +1,54 @@
 [
   {
-    "title": "Electric Scooters",
-    "description": "Awesome scooters to meet Lisbon!",
-    "price": "30",
-    "photo": "https://i.postimg.cc/QNdk2jrM/transferir.jpg",
+    "title": "Utrust Mug",
+    "description": "Drink coffee with this amazing mug.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/2ybFtydq/mug-utrust.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Utrust Powerbank",
+    "description": "A powerfull powerbank.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/NF37vtbd/powerbank-utrust.png",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Utrust Hoodie",
+    "description": "Stay hot in the winter with this special Hoodie.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/rmp9SQKN/hoodie-utrust.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "UTrust T-shirt",
+    "description": "Stay fresh with this amazing t-shirt.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/TwHJQgbM/tshirt-utrust.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "João Anes Azure Voucher",
+    "description": "Use Microsoft Cloud with this voucher.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/8PbBn2Mm/voucher-azure-anes.jpg",
+    "email": "fakemail@gmail.com",
+    "phone_number": "+351999999999",
+    "end_at": 1553385600
+  },
+  {
+    "title": "Utrust Powerbank",
+    "description": "A powerfull powerbank.",
+    "price": "1",
+    "photo": "https://i.postimg.cc/NF37vtbd/powerbank-utrust.png",
     "email": "fakemail@gmail.com",
     "phone_number": "+351999999999",
     "end_at": 1553385600
