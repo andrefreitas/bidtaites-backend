@@ -1,7 +1,10 @@
 defmodule BidtaitesWeb.AuctionsController do
   use BidtaitesWeb, :controller
 
-  alias Bidtaites.Interactors.CreateAuction
+  alias Bidtaites.Interactors.{
+    CreateAuction,
+    ListAuctions
+    }
 
   def create(conn, params) do
     auction = %{
@@ -14,5 +17,9 @@ defmodule BidtaitesWeb.AuctionsController do
     }
 
     json(conn, CreateAuction.call(auction))
+  end
+
+  def list(conn, _) do
+    json(conn, ListAuctions.call)
   end
 end
