@@ -62,4 +62,17 @@ defmodule Bidtaites.Repo.Bids do
     |> where(email: ^email)
     |> Repo.all
   end
+
+  def refunds(auction_id) do
+    max_bid_query = from b in __MODULE__,
+      where: b.status == "paid" and b.auction_id == ^auction_id,
+      order_by: [desc: b.value]
+
+    case Repo.all(max_bid_query) |> List.first do
+      nil -> []
+      max_bid ->
+        refunds_query = from b in __MODULE__, where: b.auction_id == ^auction_id and b.email != ^max_bid.email
+        Repo.all(refunds_query)
+    end
+  end
 end
