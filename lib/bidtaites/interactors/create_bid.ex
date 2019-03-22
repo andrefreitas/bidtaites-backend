@@ -4,7 +4,18 @@ defmodule Bidtaites.Interactors.CreateBid do
 
   require Logger
 
-  def call(%{"auction_id" => auction_id, "email" => email, "value" => value} = bid) do
+  def call(%{"auction_id" => auction_id, "value" => value} = bid) do
+    {val, _} = Integer.parse(value)
+
+    case Bids.last(auction_id) do
+      nil -> bid_correct(bid)
+      max_bid when max_bid < val -> bid_correct(bid)
+      _ -> %{error: "error creating bid: bid lower than value."}
+    end
+
+  end
+
+  defp bid_correct(%{"auction_id" => auction_id, "email" => email, "value" => value} = bid) do
     {val, _} = Integer.parse(value)
 
     paid =
