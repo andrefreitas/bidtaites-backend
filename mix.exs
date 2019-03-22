@@ -34,6 +34,7 @@ defmodule Bidtaites.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.4"},
+      {:cors_plug, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:phoenix, "~> 1.4.2"},
       {:phoenix_pubsub, "~> 1.1"},
