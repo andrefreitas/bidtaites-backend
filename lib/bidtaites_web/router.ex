@@ -9,5 +9,6 @@ defmodule BidtaitesWeb.Router do
     pipe_through :api
 
     post "/auctions", AuctionsController, :create
+    get "/auctions", AuctionsController, :list
   end
 end

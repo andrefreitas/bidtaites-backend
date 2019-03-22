@@ -1,6 +1,7 @@
 defmodule Bidtaites.Repo.Auctions do
   use Ecto.Schema
 
+  @derive {Jason.Encoder, except: [:__meta__]}
   schema "auctions" do
     field :uuid, :string
     field :title, :string
@@ -9,6 +10,7 @@ defmodule Bidtaites.Repo.Auctions do
     field :photo, :string
     field :description, :string
     field :phone_number, :string
+    field :end_at, :integer
   end
 
   import Ecto.Query
@@ -22,7 +24,9 @@ defmodule Bidtaites.Repo.Auctions do
     price
     photo
     description
-    phone_number)a
+    phone_number
+    end_at
+  )a
 
   def all do
     Repo.all(from n in __MODULE__)

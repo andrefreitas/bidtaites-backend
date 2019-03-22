@@ -10,6 +10,7 @@ defmodule Bidtaites.Repo.Migrations.CreateAuctions do
       add :photo, :string
       add :description, :string
       add :phone_number, :string
+      add :end_at, :integer
 
       timestamps()
     end
