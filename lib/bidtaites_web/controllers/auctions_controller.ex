@@ -14,7 +14,8 @@ defmodule BidtaitesWeb.AuctionsController do
       description: params["description"],
       price: params["price"],
       photo: params["photo"],
-      phone_number: params["phone_number"]
+      phone_number: params["phone_number"],
+      end_at: params["end_at"]
     }
 
     json(conn, CreateAuction.call(auction))

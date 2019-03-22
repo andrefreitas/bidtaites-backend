@@ -4,8 +4,7 @@ defmodule Bidtaites.Interactors.CreateAuction do
   def call(auction) do
     auction_with_uuid =
       Map.merge(auction, %{
-        uuid: UUID.uuid4(),
-        end_at: DateTime.utc_now() |> DateTime.to_unix()
+        uuid: UUID.uuid4()
       })
 
     case Auctions.insert(auction_with_uuid) do
