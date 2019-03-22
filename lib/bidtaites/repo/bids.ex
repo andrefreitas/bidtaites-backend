@@ -48,7 +48,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def last(id) do
     last_bid_query = from b in __MODULE__,
-    where: b.auction_id == ^id and b.status == "paid",
+    where: b.auction_id == ^id,
     order_by: [desc: b.value]
 
     Repo.all(last_bid_query) |> List.first
@@ -64,7 +64,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def max_bid(id) do
     last_bid_query = from b in __MODULE__,
-      where: b.auction_id == ^id and b.status == "paid",
+      where: b.auction_id == ^id,
       select: max(b.value)
 
     Repo.all(last_bid_query)
@@ -77,7 +77,13 @@ defmodule Bidtaites.Repo.Bids do
   end
 
   def refunds(auction_id) do
-    case Bidtaites.Repo.Bids.last(auction_id) do
+    last_bid_query = from b in __MODULE__,
+    where: b.auction_id == ^auction_id and b.status == "paid",
+    order_by: [desc: b.value]
+
+    max_bid = Repo.all(last_bid_query) |> List.first
+
+    case max_bid do
       nil -> []
       max_bid ->
         auction = Auctions.get(max_bid.auction_id)
