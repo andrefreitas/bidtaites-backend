@@ -2,7 +2,6 @@ defmodule BidtaitesWeb.Router do
   use BidtaitesWeb, :router
 
   pipeline :api do
-    plug CORSPlug, [origin: "*"]
     plug :accepts, ["json"]
   end
 

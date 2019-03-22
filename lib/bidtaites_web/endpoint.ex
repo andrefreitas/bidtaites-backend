@@ -40,5 +40,6 @@ defmodule BidtaitesWeb.Endpoint do
     key: "_bidtaites_key",
     signing_salt: "vDlMk562"
 
+  plug CORSPlug, [origin: "*"]
   plug BidtaitesWeb.Router
 end
