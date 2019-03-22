@@ -37,7 +37,7 @@ defmodule Bidtaites.Gateway.Utrust do
               reference: reference_id,
               amount: %{
                 total: price,
-                currency: "EUR",
+                currency: "UTK",
                 details: %{
                   subtotal: price,
                   handling_fee: "0.00"
@@ -53,7 +53,7 @@ defmodule Bidtaites.Gateway.Utrust do
                   sku: reference_id,
                   name: reference_id,
                   price: price,
-                  currency: "EUR",
+                  currency: "UTK",
                   quantity: 1
                 }
               ]
@@ -114,7 +114,7 @@ defmodule Bidtaites.Gateway.Utrust do
           "data": %{
             "type": "ses",
             "attributes": %{
-              "currency": "EUR",
+              "currency": "UTK",
               "amount": amount,
               "reason": "you lost the auction!"
             }
