@@ -3,6 +3,8 @@ defmodule Bidtaites.Repo.Bids do
 
   require Logger
 
+  alias Bidtaites.Repo.Auctions
+
   @derive {Jason.Encoder, except: [:__meta__]}
   schema "bids" do
     field :auction_id, :string
@@ -46,7 +48,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def last(id) do
     last_bid_query = from b in __MODULE__,
-    where: b.auction_id == ^id,
+    where: b.auction_id == ^id and b.status == "paid",
     order_by: [desc: b.value]
 
     Repo.all(last_bid_query) |> List.first
@@ -62,7 +64,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def max_bid(id) do
     last_bid_query = from b in __MODULE__,
-      where: b.auction_id == ^id,
+      where: b.auction_id == ^id and b.status == "paid",
       select: max(b.value)
 
     Repo.all(last_bid_query)
@@ -75,14 +77,11 @@ defmodule Bidtaites.Repo.Bids do
   end
 
   def refunds(auction_id) do
-    max_bid_query = from b in __MODULE__,
-      where: b.status == "paid" and b.auction_id == ^auction_id,
-      order_by: [desc: b.value]
-
-    case Repo.all(max_bid_query) |> List.first do
+    case Bidtaites.Repo.Bids.last(auction_id) do
       nil -> []
       max_bid ->
-        Logger.warn(">>> Max Bid #{max_bid.auction_id}: #{max_bid.photo} ~ #{max_bid.email}")
+        auction = Auctions.get(max_bid.auction_id)
+        Logger.warn(">>> Max Bid #{max_bid.auction_id}: #{auction.photo} ~ #{max_bid.email}")
         refunds_query = from b in __MODULE__, where: b.auction_id == ^auction_id and b.email != ^max_bid.email
         Repo.all(refunds_query)
     end
