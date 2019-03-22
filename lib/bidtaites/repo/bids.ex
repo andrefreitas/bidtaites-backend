@@ -49,6 +49,14 @@ defmodule Bidtaites.Repo.Bids do
     Repo.all(last_bid_query) |> List.first
   end
 
+  def max_bid(id) do
+    last_bid_query = from b in __MODULE__,
+      where: b.auction_id == ^id,
+      select: max(b.value)
+
+    Repo.all(last_bid_query)
+  end
+
   def get(email) do
     __MODULE__
     |> where(email: ^email)

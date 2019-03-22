@@ -12,6 +12,7 @@ defmodule Bidtaites.Repo.Migrations.CreateAuctions do
       add :phone_number, :string
       add :end_at, :integer
       add :status, :string
+      add :max_bid, :string
 
       timestamps()
     end
