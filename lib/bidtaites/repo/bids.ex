@@ -41,6 +41,14 @@ defmodule Bidtaites.Repo.Bids do
     |> Repo.update()
   end
 
+  def last(id, email) do
+    last_bid_query = from b in __MODULE__,
+      where: b.auction_id == ^id  and b.email == ^email,
+      order_by: [desc: b.value]
+
+    Repo.all(last_bid_query) |> List.first
+  end
+
   def get(email) do
     __MODULE__
     |> where(email: ^email)
