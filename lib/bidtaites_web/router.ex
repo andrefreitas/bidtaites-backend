@@ -13,6 +13,7 @@ defmodule BidtaitesWeb.Router do
     get "/auctions/:id", AuctionsController, :fetch
 
     post "/auctions/:auction_id/bids", BidsController, :create
-    get "/auctions/:auction_id/bids", BidsController, :list
+    post "/auctions/:auction_id/bids", BidsController, :create
+    post "/bids/callback", BidsController, :callback
   end
 end
