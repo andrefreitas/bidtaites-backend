@@ -9,7 +9,7 @@ defmodule Bidtaites.Interactors.CreateBid do
 
     case Bids.last(auction_id) do
       nil -> bid_correct(bid)
-      max_bid when max_bid.value < val -> bid_correct(bid)
+      %{"value" => value} when value < val -> bid_correct(bid)
       _ -> %{error: "error creating bid: bid lower than value."}
     end
 
