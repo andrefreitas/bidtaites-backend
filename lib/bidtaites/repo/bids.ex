@@ -9,11 +9,12 @@ defmodule Bidtaites.Repo.Bids do
     field :paid, :integer
     field :email, :string
     field :status, :string
+    field :ref_id, :string
 
     timestamps()
   end
 
-  @permitted_fields [:auction_id, :order_id, :value, :paid, :email, :status]
+  @permitted_fields [:auction_id, :order_id, :value, :paid, :email, :status, :ref_id]
 
   import Ecto.Query
   import Ecto.Changeset
@@ -31,12 +32,12 @@ defmodule Bidtaites.Repo.Bids do
     |> Repo.insert
   end
 
-  def get_by_order_id(id) do
-    Repo.get_by(__MODULE__, order_id: id)
+  def get_by_ref_id(id) do
+    Repo.get_by(__MODULE__, ref_id: id)
   end
 
-  def update(%{order_id: id} = bid) do
-    get_by_order_id(id)
+  def update(%{ref_id: id} = bid) do
+    get_by_ref_id(id)
     |> cast(bid, @permitted_fields)
     |> Repo.update()
   end

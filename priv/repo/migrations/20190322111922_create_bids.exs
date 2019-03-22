@@ -9,6 +9,7 @@ defmodule Bidtaites.Repo.Migrations.CreateBids do
       add :paid, :integer
       add :email, :string
       add :status, :string
+      add :ref_id, :string
 
       timestamps()
     end

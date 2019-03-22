@@ -27,14 +27,14 @@ defmodule Bidtaites.Gateway.Utrust do
     end
   end
 
-  def create_order(token, price, item_id, email) do
+  def create_order(token, price, reference_id, email) do
     {:ok, body} =
       Poison.encode(%{
         data: %{
           type: "orders",
           attributes: %{
             order: %{
-              reference: "order-#{item_id}",
+              reference: reference_id,
               amount: %{
                 total: price,
                 currency: "EUR",
@@ -50,8 +50,8 @@ defmodule Bidtaites.Gateway.Utrust do
               },
               line_items: [
                 %{
-                  sku: item_id,
-                  name: item_id,
+                  sku: reference_id,
+                  name: reference_id,
                   price: price,
                   currency: "EUR",
                   quantity: 1

@@ -7,7 +7,7 @@ defmodule Bidtaites.Interactors.CreateBid do
   def call(%{"auction_id" => auction_id, "value" => value} = bid) do
     {val, _} = Integer.parse(value)
 
-    case Bids.last(auction_id) do
+    case Bids.last(auction_id).value do
       nil -> bid_correct(bid)
       max_bid when max_bid < val -> bid_correct(bid)
       _ -> %{error: "error creating bid: bid lower than value."}
@@ -24,6 +24,8 @@ defmodule Bidtaites.Interactors.CreateBid do
       lst -> val - lst.value
     end
 
+    ref_id = UUID.uuid4
+
     {:ok, %{"data" => %{"attributes" => %{"token" => token}}}} = Utrust.store_session
     {:ok, %{
       "data" => %{
@@ -33,13 +35,14 @@ defmodule Bidtaites.Interactors.CreateBid do
     "id" => order_id,
     "type" => "orders_redirect"
   }
-    }} = Utrust.create_order(token, value, auction_id, email)
+    }} = Utrust.create_order(token, value, ref_id, email)
 
-        bid_with_status = Map.merge(bid, %{
-              "status" => "pending",
-              "order_id" => order_id,
-              "paid" => paid
-        })
+    bid_with_status = Map.merge(bid, %{
+          "status" => "pending",
+          "order_id" => order_id,
+          "paid" => paid,
+          "ref_id" => ref_id
+                                })
 
     case Bids.insert(bid_with_status) do
       {:ok, _} -> Map.merge(bid_with_status, %{redirect: pay_redirect})
