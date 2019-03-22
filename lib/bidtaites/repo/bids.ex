@@ -1,6 +1,8 @@
 defmodule Bidtaites.Repo.Bids do
   use Ecto.Schema
 
+  require Logger
+
   @derive {Jason.Encoder, except: [:__meta__]}
   schema "bids" do
     field :auction_id, :string
