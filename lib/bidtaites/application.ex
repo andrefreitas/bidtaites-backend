@@ -5,6 +5,8 @@ defmodule Bidtaites.Application do
 
   use Application
 
+  alias Bidtaites.Repo.Auctions
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
@@ -20,7 +22,14 @@ defmodule Bidtaites.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Bidtaites.Supervisor]
-    Supervisor.start_link(children, opts)
+    res = Supervisor.start_link(children, opts)
+
+    Auctions.open_auctions()
+    |> Enum.each(fn %Bidtaites.Repo.Auctions{uuid: uuid, end_at: end_at} ->
+      {:ok, _} = Bidtaites.Refund.DynamicSupervisor.start_child(%{uuid: uuid, end_at: end_at})
+    end)
+
+    res
   end
 
   # Tell Phoenix to update the endpoint configuration

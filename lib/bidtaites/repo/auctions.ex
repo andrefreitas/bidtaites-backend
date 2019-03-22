@@ -41,6 +41,12 @@ defmodule Bidtaites.Repo.Auctions do
     |> Repo.insert()
   end
 
+  def open_auctions do
+    __MODULE__
+    |> where(status: "OPEN")
+    |> Repo.all
+  end
+
   def get(id) do
     Repo.get_by(__MODULE__, uuid: id)
   end
