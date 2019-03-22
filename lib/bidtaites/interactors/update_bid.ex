@@ -1,9 +1,9 @@
 defmodule Bidtaites.Interactors.UpdateBid do
   alias Bidtaites.Repo.Bids
 
-  def call(order_id, status) do
+  def call(ref_id, status) do
     bid = %{
-      order_id: order_id,
+      ref_id: ref_id,
       status: status
     }
 
