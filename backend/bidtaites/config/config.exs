@@ -7,6 +7,12 @@
 # General application configuration
 use Mix.Config
 
+config :bidtaites, Bidtaites.Repo,
+  database: "bidtaites",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost"
+
 config :bidtaites,
   ecto_repos: [Bidtaites.Repo]
 

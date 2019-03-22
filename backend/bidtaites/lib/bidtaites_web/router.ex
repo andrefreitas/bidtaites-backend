@@ -7,5 +7,7 @@ defmodule BidtaitesWeb.Router do
 
   scope "/api", BidtaitesWeb do
     pipe_through :api
+
+    post "/auctions", AuctionsController, :create
   end
 end
