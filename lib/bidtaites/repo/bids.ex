@@ -48,7 +48,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def last(id) do
     last_bid_query = from b in __MODULE__,
-    where: b.auction_id == ^id,
+    where: b.auction_id == ^id and b.status == "paid",
     order_by: [desc: b.value]
 
     Repo.all(last_bid_query) |> List.first
