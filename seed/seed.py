@@ -14,9 +14,10 @@ def random_expiration_timestamp(delta_hours):
 
 
 def create_auction(auction):
-    auction['end_at'] = random_expiration_timestamp(delta_hours=3)
-    requests.post(f"{API_URL}/api/auctions", json=auction)
+    auction['end_at'] = random_expiration_timestamp(delta_hours=0.5)
+    response = requests.post(f"{API_URL}/api/auctions", json=auction)
     print(f"Created {auction['title']}")
+    print(response)
 
 
 def auctions():
