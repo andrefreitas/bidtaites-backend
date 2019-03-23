@@ -64,7 +64,7 @@ defmodule Bidtaites.Repo.Bids do
 
   def max_bid(id) do
     last_bid_query = from b in __MODULE__,
-      where: b.auction_id == ^id,
+      where: b.auction_id == ^id and b.status == "paid",
       select: max(b.value)
 
     Repo.all(last_bid_query)
